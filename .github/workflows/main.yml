@@ -32,9 +32,9 @@ jobs:
           targetPlatform: WebGL
       - name: Deploy project
         uses: josephbmanley/butler-publish-itchio-action@master
-        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-        CHANNEL: Web
-        ITCH_GAME: ${{ secrets.ITCH_GAME }}
-        ITCH_USER: ${{ secrets.ITCH_USER }}
-        PACKAGE: build
-      
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: Web
+          ITCH_GAME: ${{ secrets.ITCH_GAME }}
+          ITCH_USER: ${{ secrets.ITCH_USER }}
+          PACKAGE: build
