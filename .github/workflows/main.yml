@@ -24,8 +24,9 @@ jobs:
           path: Library
           key: Library
 
+      # https://github.com/webbertakken/unity-builder/issues/183#issuecomment-735933455
       - name: Build project
-        uses: webbertakken/unity-builder@v2.0-aplha-5
+        uses: webbertakken/unity-builder@v2.0-alpha
         with:
           unityVersion: 2019.4.14f1
           targetPlatform: WebGL
