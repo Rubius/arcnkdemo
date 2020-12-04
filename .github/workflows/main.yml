@@ -1,0 +1,40 @@
+name: Main Pipeline
+
+on:
+  push: {}
+
+env:
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+jobs:
+  buildAndPublish:
+    name: Build the app and publish to itch.io
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Getting cache
+        uses: actions/cache@v1.1.0
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - name: Build project
+        uses: webbertakken/unity-builder@v1.1
+        with:
+          unityVersion: 2019.4.15f1
+          targetPlatform: WebGL
+      - name: Deploy project
+        uses: josephbmanley/butler-publish-itchio-action@master
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: Web
+        ITCH_GAME: ${{ secrets.ITCH_GAME }}
+        ITCH_USER: ${{ secrets.ITCH_USER }}
+        PACKAGE: build
+      
