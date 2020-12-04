@@ -25,7 +25,7 @@ jobs:
           key: Library
 
       - name: Build project
-        uses: webbertakken/unity-builder@v2
+        uses: webbertakken/unity-builder@v2.0-aplha-5
         with:
           unityVersion: 2019.4.14f1
           targetPlatform: WebGL
