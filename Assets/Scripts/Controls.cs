@@ -23,7 +23,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""7bc4f202-4f25-4007-8d10-33011fa12966"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""BlockViewDrag"",
                     ""interactions"": """"
                 },
                 {
