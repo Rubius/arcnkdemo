@@ -35,14 +35,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Detector Movement"",
-                    ""type"": ""Button"",
-                    ""id"": ""f796e78e-6628-43e3-be3b-74315678f913"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Screen Point"",
                     ""type"": ""Value"",
                     ""id"": ""6b714e1f-1297-4037-b161-f800cf0f320c"",
@@ -76,17 +68,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eac880db-68df-4648-af00-1a2f43050060"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Detector Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""12c89776-12ea-4e84-83ad-e51fc367873c"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -105,7 +86,6 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_Camera = m_Default.FindAction("Camera", throwIfNotFound: true);
         m_Default_CameraMovement = m_Default.FindAction("Camera Movement", throwIfNotFound: true);
-        m_Default_DetectorMovement = m_Default.FindAction("Detector Movement", throwIfNotFound: true);
         m_Default_ScreenPoint = m_Default.FindAction("Screen Point", throwIfNotFound: true);
     }
 
@@ -158,7 +138,6 @@ public class @Controls : IInputActionCollection, IDisposable
     private IDefaultActions m_DefaultActionsCallbackInterface;
     private readonly InputAction m_Default_Camera;
     private readonly InputAction m_Default_CameraMovement;
-    private readonly InputAction m_Default_DetectorMovement;
     private readonly InputAction m_Default_ScreenPoint;
     public struct DefaultActions
     {
@@ -166,7 +145,6 @@ public class @Controls : IInputActionCollection, IDisposable
         public DefaultActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Camera => m_Wrapper.m_Default_Camera;
         public InputAction @CameraMovement => m_Wrapper.m_Default_CameraMovement;
-        public InputAction @DetectorMovement => m_Wrapper.m_Default_DetectorMovement;
         public InputAction @ScreenPoint => m_Wrapper.m_Default_ScreenPoint;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
@@ -183,9 +161,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CameraMovement.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
-                @DetectorMovement.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnDetectorMovement;
-                @DetectorMovement.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnDetectorMovement;
-                @DetectorMovement.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnDetectorMovement;
                 @ScreenPoint.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScreenPoint;
                 @ScreenPoint.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScreenPoint;
                 @ScreenPoint.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScreenPoint;
@@ -199,9 +174,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CameraMovement.started += instance.OnCameraMovement;
                 @CameraMovement.performed += instance.OnCameraMovement;
                 @CameraMovement.canceled += instance.OnCameraMovement;
-                @DetectorMovement.started += instance.OnDetectorMovement;
-                @DetectorMovement.performed += instance.OnDetectorMovement;
-                @DetectorMovement.canceled += instance.OnDetectorMovement;
                 @ScreenPoint.started += instance.OnScreenPoint;
                 @ScreenPoint.performed += instance.OnScreenPoint;
                 @ScreenPoint.canceled += instance.OnScreenPoint;
@@ -213,7 +185,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnCamera(InputAction.CallbackContext context);
         void OnCameraMovement(InputAction.CallbackContext context);
-        void OnDetectorMovement(InputAction.CallbackContext context);
         void OnScreenPoint(InputAction.CallbackContext context);
     }
 }

@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Detector Movement",
-                    "type": "Button",
-                    "id": "f796e78e-6628-43e3-be3b-74315678f913",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Screen Point",
                     "type": "Value",
                     "id": "6b714e1f-1297-4037-b161-f800cf0f320c",
@@ -58,17 +50,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Camera Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eac880db-68df-4648-af00-1a2f43050060",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Detector Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
