@@ -26,7 +26,7 @@ public class Lines : MonoBehaviour
         var redDir = new Vector3(0, -Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle));
         Physics.Raycast(redStart, redDir, out var hit, 20f, mask);
         var blueStart = hit.point;
-        var blueDir = hit.normal;
+        var blueDir = Vector3.Reflect(redDir,hit.normal);
         red.SetPosition(1, blueStart);
         blue.positionCount = blueAmount + 1;
         blue.SetPosition(0,blueStart);
@@ -35,7 +35,7 @@ public class Lines : MonoBehaviour
         {
             Physics.Raycast(blueStart, blueDir, out hit, 20f, mask);
             blueStart = hit.point;
-            blueDir = hit.normal;
+            blueDir = Vector3.Reflect(blueDir, hit.normal);
             blue.SetPosition(i, blueStart);
         }
     }
