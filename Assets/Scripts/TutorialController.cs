@@ -5,15 +5,11 @@ using UnityEngine.UI;
 public class TutorialController : MonoBehaviour
 {
     [Header("UI")] public RawImage defectoscopeUi;
-    public Texture uiIntroTexture;
     public Texture startUiTexture;
     public Texture[] uiTextures;
 
     [Header("Timings")] public float fadeInDuration = .5f;
     public float fadeOutDuration = .3f;
-    public float introInDuration = 1f;
-    public float introDuration = 1f;
-    public float introOutDuration = 1f;
     public float startDelay = 1f;
     public float midStepDelay = .5f;
 
@@ -46,21 +42,10 @@ public class TutorialController : MonoBehaviour
             .OnStart(() =>
             {
                 step0.interactable = false;
-                defectoscopeUi.color = Color.black;
+                defectoscopeUi.color = Color.white;
+                defectoscopeUi.texture = startUiTexture;
+                lines.SetActive(true);
             }).Append(Hide(step0))
-            .Join(defectoscopeUi
-                .DOColor(Color.white, introInDuration)
-                .OnStart(() => defectoscopeUi.texture = uiIntroTexture))
-            .AppendInterval(introDuration)
-            .Append(defectoscopeUi
-                .DOColor(Color.black, introOutDuration)
-                .From(Color.white)
-                .OnComplete(() =>
-                {
-                    defectoscopeUi.color = Color.white;
-                    defectoscopeUi.texture = startUiTexture;
-                    lines.SetActive(true);
-                }))
             .AppendInterval(midStepDelay)
             .Append(Show(step1));
 
